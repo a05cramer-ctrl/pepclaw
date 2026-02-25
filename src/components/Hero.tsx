@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import pepclawImg from '../image-removebg-preview (1).png';
 
@@ -37,6 +37,48 @@ function GlitchText({ text }: { text: string }) {
 }
 
 
+
+const CA = '5XwYqRrYjWfFpvfhKvwaM2GP5yc1gbhSHCWCxhY3pump';
+
+function CopyCAButton() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(CA).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  return (
+    <motion.button
+      onClick={handleCopy}
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.97 }}
+      className="font-orbitron"
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '8px',
+        padding: '14px 28px',
+        borderRadius: '8px',
+        border: 'none',
+        background: copied ? 'var(--neon-green)' : 'var(--neon-green)',
+        color: '#050508',
+        fontSize: '0.8rem',
+        fontWeight: 700,
+        letterSpacing: '1.5px',
+        textTransform: 'uppercase',
+        cursor: 'pointer',
+        boxShadow: '0 0 30px rgba(0,255,136,0.4)',
+        animation: 'pulse-glow 2s ease-in-out infinite',
+        transition: 'all 0.2s',
+      }}
+    >
+      {copied ? 'COPIED!' : 'COPY CA'}
+    </motion.button>
+  );
+}
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -272,7 +314,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.4 }}
               style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}
             >
-              <CTAButton primary href="#about">Copy CA</CTAButton>
+              <CopyCAButton />
               <CTAButton purple href="https://x.com/PepClaw">X</CTAButton>
             </motion.div>
 
