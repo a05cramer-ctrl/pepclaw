@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --neon-green: #00ff88;
+  --neon-green-dim: #00cc6a;
+  --electric-purple: #bf00ff;
+  --purple-dim: #8b00cc;
+  --bg-dark: #050508;
+  --bg-card: #0a0a12;
+  --bg-card-2: #0d0d1a;
+  --text-primary: #f0f0f8;
+  --text-muted: #7070a0;
+  --border-glow: rgba(0, 255, 136, 0.2);
+  --border-purple: rgba(191, 0, 255, 0.25);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neon-green);
+  border-radius: 2px;
+}
+
+/* Glitch animation */
+@keyframes glitch {
+  0%, 100% { clip-path: inset(50% 0 30% 0); transform: translate(-4px, 0); }
+  20% { clip-path: inset(10% 0 80% 0); transform: translate(4px, 0); }
+  40% { clip-path: inset(70% 0 10% 0); transform: translate(-2px, 0); color: var(--electric-purple); }
+  60% { clip-path: inset(30% 0 50% 0); transform: translate(2px, 0); }
+  80% { clip-path: inset(80% 0 5% 0); transform: translate(-3px, 0); color: var(--neon-green); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(20% 0 60% 0); transform: translate(3px, 0); color: var(--electric-purple); }
+  25% { clip-path: inset(60% 0 20% 0); transform: translate(-3px, 0); }
+  50% { clip-path: inset(40% 0 40% 0); transform: translate(2px, 0); color: var(--neon-green); }
+  75% { clip-path: inset(5% 0 85% 0); transform: translate(-2px, 0); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes flicker {
+  0%, 19.9%, 22%, 62.9%, 64%, 64.9%, 70%, 100% { opacity: 1; }
+  20%, 21.9%, 63%, 63.9%, 65%, 69.9% { opacity: 0.6; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), 0 0 40px rgba(0, 255, 136, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.6), 0 0 80px rgba(0, 255, 136, 0.2); }
+}
+
+@keyframes pulse-purple {
+  0%, 100% { box-shadow: 0 0 20px rgba(191, 0, 255, 0.3), 0 0 40px rgba(191, 0, 255, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(191, 0, 255, 0.6), 0 0 80px rgba(191, 0, 255, 0.2); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes bg-grid-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes claw-bounce {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+@keyframes bar-grow {
+  from { width: 0%; }
+  to { width: var(--bar-width); }
+}
+
+/* Neon text helpers */
+.neon-green {
+  color: var(--neon-green);
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.8), 0 0 30px rgba(0, 255, 136, 0.4);
+}
+
+.neon-purple {
+  color: var(--electric-purple);
+  text-shadow: 0 0 10px rgba(191, 0, 255, 0.8), 0 0 30px rgba(191, 0, 255, 0.4);
+}
+
+.font-mono {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Section spacing */
+.section {
+  padding: 100px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card base */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 12px;
+  padding: 32px;
+}
+
+/* Gradient text */
+.gradient-text-green {
+  background: linear-gradient(135deg, var(--neon-green), #00ffcc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-purple {
+  background: linear-gradient(135deg, var(--electric-purple), #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
