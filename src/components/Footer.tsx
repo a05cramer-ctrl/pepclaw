@@ -40,13 +40,16 @@ export default function Footer() {
               {/* Social links */}
               <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
                 {[
-                  { icon: 'X', label: 'Twitter' },
+                  { icon: 'X', label: 'Twitter', href: 'https://x.com/PepClaw' },
                   { icon: 'TG', label: 'Telegram' },
                   { icon: 'DC', label: 'Discord' },
                 ].map((s) => (
-                  <button
+                  <a
                     key={s.label}
+                    href={'href' in s ? s.href : undefined}
                     title={s.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{
                       width: '40px',
                       height: '40px',
@@ -59,20 +62,21 @@ export default function Footer() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       transition: 'all 0.2s',
+                      textDecoration: 'none',
                     }}
                     onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLButtonElement).style.background = 'rgba(0,255,136,0.12)';
-                      (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(0,255,136,0.4)';
+                      (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(0,255,136,0.12)';
+                      (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(0,255,136,0.4)';
                     }}
                     onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLButtonElement).style.background = 'rgba(0,255,136,0.05)';
-                      (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(0,255,136,0.15)';
+                      (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(0,255,136,0.05)';
+                      (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(0,255,136,0.15)';
                     }}
                   >
                     <span className="font-mono" style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '1px' }}>
                       {s.icon}
                     </span>
-                  </button>
+                  </a>
                 ))}
               </div>
             </motion.div>

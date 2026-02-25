@@ -273,7 +273,7 @@ export default function Hero() {
               style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}
             >
               <CTAButton primary href="#about">Copy CA</CTAButton>
-              <CTAButton purple href="#roadmap">X</CTAButton>
+              <CTAButton purple href="https://x.com/PepClaw">X</CTAButton>
             </motion.div>
 
           </div>
