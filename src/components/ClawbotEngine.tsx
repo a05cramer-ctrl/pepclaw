@@ -188,7 +188,7 @@ export default function ClawbotEngine() {
                   transition: 'border-color 0.3s, transform 0.3s',
                   cursor: 'default',
                 }}
-                whileHover={{ x: 6, borderColor: `${f.color}40` } as object}
+                whileHover={{ x: 6 }}
               >
                 <div
                   style={{
